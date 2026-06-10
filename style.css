@@ -1,0 +1,186 @@
+/* ---- Configuració general ---- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(circle at 30% 30%, #3a1e1e, #0a0404);
+  font-family: 'Georgia', serif;
+  color: #f5e6d3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.pantalla {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 2rem;
+}
+
+.pantalla.oculta {
+  display: none;
+}
+
+/* ---- Títol de l'espectacle ---- */
+.titol-xou {
+  font-size: 5rem;
+  text-align: center;
+  color: #ffd700;
+  text-shadow: 4px 4px 0 #b8860b, 8px 8px 0 #8b0000;
+  letter-spacing: 0.15em;
+  margin-bottom: 2rem;
+}
+
+/* ---- Botons de circ ---- */
+.boto-circ {
+  background: #b22222;
+  border: 3px solid #ffd700;
+  color: #ffd700;
+  font-size: 1.6rem;
+  font-weight: bold;
+  padding: 0.6rem 2.5rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  box-shadow: 0 0 15px #ffd700;
+  transition: transform 0.1s, box-shadow 0.2s;
+  margin-top: 2rem;
+}
+
+.boto-circ:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 25px #fff;
+}
+
+/* ---- Marcs de bombetes (base) ---- */
+.marc-bombetes {
+  position: relative;
+  background: #151515;
+  padding: 2.5rem 3rem;
+  text-align: center;
+  z-index: 1;
+}
+
+/* Pseudo-element on es dibuixaran les bombetes amb JavaScript */
+.marc-bombetes::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  box-shadow: var(--bulbs-lit);
+  animation: parpelleig-bombetes 1.8s infinite alternate;
+}
+
+@keyframes parpelleig-bombetes {
+  0%   { box-shadow: var(--bulbs-lit); }
+  100% { box-shadow: var(--bulbs-dim); }
+}
+
+/* Regles (mida concreta per al marc) */
+#marc-regles {
+  width: 300px;
+  padding: 3rem 2rem;
+}
+
+#marc-regles.tancant {
+  animation: crash-bombetes 0.6s forwards;
+}
+
+@keyframes crash-bombetes {
+  0%   { background: #151515; }
+  30%  { background: #2b0000; }
+  100% { background: #000; color: transparent; border-color: transparent; }
+}
+
+.titol-regles {
+  font-size: 3rem;
+  color: #ffd700;
+  text-shadow: 2px 2px 0 #8b0000;
+  margin-bottom: 1rem;
+}
+
+/* ---- Ruleta ---- */
+#contenidor-ruleta {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 1.5rem;
+}
+
+#canvas-ruleta {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  border: 6px solid #d4af37;
+  box-shadow: 0 0 30px #ffd700;
+  transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+}
+
+#agulla {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-top: 32px solid #ffd700;
+  filter: drop-shadow(0 0 6px #000);
+  z-index: 10;
+}
+
+/* ---- Categoria seleccionada ---- */
+#capsa-categoria {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2.5rem 4rem;
+  font-size: 2.8rem;
+  color: #ffd700;
+  text-shadow: 2px 2px 0 #8b0000;
+  background: #151515;
+  animation: none; /* sense parpelleig, llum fixa */
+}
+
+#capsa-categoria::before {
+  animation: none;
+}
+
+#pantalla-categoria .boto-circ {
+  position: fixed;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ---- Premi final ---- */
+#marc-premi {
+  padding: 3rem;
+  width: 280px;
+}
+
+#contingut-premi p {
+  font-size: 2rem;
+  color: #ffd700;
+  margin-top: 2rem;
+}
+
+#contingut-premi.oculta {
+  display: none;
+}

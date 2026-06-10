@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tira i juga!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Pantalla d'inici -->
+  <div id="pantalla-inici" class="pantalla">
+    <h1 class="titol-xou">Tira i juga!</h1>
+    <button id="boto-comencar" class="boto-circ">Comença</button>
+  </div>
+
+  <!-- Pantalla de regles -->
+  <div id="pantalla-regles" class="pantalla oculta">
+    <div id="marc-regles" class="marc-bombetes">
+      <h2 class="titol-regles">Regles</h2>
+      <button id="boto-continuar" class="boto-circ">Continuar</button>
+    </div>
+  </div>
+
+  <!-- Pantalla de la ruleta -->
+  <div id="pantalla-ruleta" class="pantalla oculta">
+    <div id="contenidor-ruleta">
+      <canvas id="canvas-ruleta" width="400" height="400"></canvas>
+      <div id="agulla"></div>
+    </div>
+    <button id="boto-girar" class="boto-circ">Gira!</button>
+  </div>
+
+  <!-- Pantalla de categoria seleccionada -->
+  <div id="pantalla-categoria" class="pantalla oculta">
+    <div id="capsa-categoria" class="marc-bombetes marc-categoria">
+      <span id="nom-categoria"></span>
+    </div>
+    <button id="boto-tornar" class="boto-circ">Continua</button>
+  </div>
+
+  <!-- Pantalla final (premi) -->
+  <div id="pantalla-final" class="pantalla oculta">
+    <div id="marc-premi" class="marc-bombetes">
+      <button id="boto-premi" class="boto-circ">Premi</button>
+      <div id="contingut-premi" class="oculta">
+        <p>Un xec de 1.000€</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
